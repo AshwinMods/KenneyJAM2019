@@ -9,11 +9,9 @@ public class RotCunt : MonoBehaviour
 
     public Vector2 sensivity = Vector2.one;
     public Transform[] targetObjects;
-
-    public Vector3 curAngle;
-    public Vector3 targetAngle;
     public float accuracy;
     public Image accColor;
+    public Text accText;
 
     public void Input_OnDragBegin(BaseEventData e)
     {
@@ -31,17 +29,22 @@ public class RotCunt : MonoBehaviour
         Set_Rotation(p.delta);
     }
 
-    public Quaternion cRot;
-
     public void Set_Rotation( Vector3 r )
     {
         foreach (var item in targetObjects)
         {
             item.RotateAround(Vector3.up, -r.x * Mathf.Deg2Rad * sensivity.x);
             item.RotateAround(Vector3.right, r.y * Mathf.Deg2Rad * sensivity.y);
-            curAngle = item.eulerAngles;
-
-            cRot = item.rotation;
+            //accuracy = Mathf.Abs(item.forward.z);
+            //accuracy = Mathf.Pow(accuracy, 50); 
         }
+    }
+
+    private void Update()
+    {
+        accuracy = Mathf.Abs(targetObjects[0].forward.z);
+        accText.text = System.Math.Round(accuracy * 100, 1) + "%";
+        accuracy = Mathf.Pow(accuracy, 50);
+        if (accColor) accColor.color = (Color.green * accuracy) + (Color.red * (1-accuracy));
     }
 }
