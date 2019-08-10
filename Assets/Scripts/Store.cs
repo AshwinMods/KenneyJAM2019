@@ -9,8 +9,7 @@ public class Store : MonoBehaviour
     {
         public string name;
         public Sprite sprite;
-        [TextArea(1,4)]
-        string[] isseKatega;
+        public string[] isseKatega;
     }
 
     public Item[] items;

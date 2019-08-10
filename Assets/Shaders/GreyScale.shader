@@ -3,11 +3,14 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+		_Effect("Effector", Range(0,1)) = 0
     }
     SubShader
     {
         // No culling or depth
         Cull Off ZWrite Off ZTest Always
+		Blend SrcAlpha OneMinusSrcAlpha
+
 
         Pass
         {
@@ -38,12 +41,13 @@
             }
 
             sampler2D _MainTex;
+			float _Effect;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 				//just take the average
-				col.rgb = (col.r + col.g + col.b) / 3;
+				col.rgb =  (col.r + col.g + col.b) / 3 * _Effect;
                 return col;
             }
             ENDCG
