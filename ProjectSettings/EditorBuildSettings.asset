@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/___Scenes/dadduGun.unity
+    guid: 2d751ff9f3435bc46b74448e48b2187f
   m_configObjects: {}
