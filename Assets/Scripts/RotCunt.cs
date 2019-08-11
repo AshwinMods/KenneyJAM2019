@@ -47,4 +47,13 @@ public class RotCunt : MonoBehaviour
         accuracy = Mathf.Pow(accuracy, 50);
         if (accColor) accColor.color = (Color.green * accuracy) + (Color.red * (1-accuracy));
     }
+
+    public void Randomize_Rotation()
+    {
+        Set_Rotation(new Vector3(Random.value * 360, Random.value * 360));
+        Set_Rotation(new Vector3(Random.value * 360, Random.value * 360));
+        Set_Rotation(new Vector3(Random.value * 360, Random.value * 360));
+        Set_Rotation(new Vector3(Random.value * 360, Random.value * 360));
+        Set_Rotation(new Vector3(Random.value * 360, Random.value * 360));
+    }
 }
